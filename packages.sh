@@ -13,9 +13,13 @@ then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
+
 # Update the brew repository
 echo Updating brew...
 brew update
+
+# Update the right version of zsh
+brew install zsh
 
 # Install packages
 pkgs=(

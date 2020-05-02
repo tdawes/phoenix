@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+remote=$1
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [[ ! -z $remote ]]
+then 
+    git branch --set-upstream-to="${remote}/${branch}";
+fi

@@ -8,9 +8,8 @@ export PROMPT='%F{cyan}%n:%F{yellow}%~%F{245}$(parse_git_branch)%F{white}%%%f '
 # zsh autocompletion
 autoload -Uz compinit && compinit
 
-# git commands
-export PATH=${${(%):-%x}:a:h}/git:$PATH
-
 # git aliases
 alias gs="git status"
 alias gl="git lola"
+
+export PATH="${${(%):-%x}:a:h}/unix:$PATH"
