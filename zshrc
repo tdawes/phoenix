@@ -11,5 +11,7 @@ autoload -Uz compinit && compinit
 # git aliases
 alias gs="git status"
 alias gl="git lola"
+alias gd="git diff"
+alias gdc="git diff --cached"
 
 export PATH="${${(%):-%x}:a:h}/unix:$PATH"

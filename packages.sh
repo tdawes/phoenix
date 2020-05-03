@@ -48,19 +48,26 @@ pkgs=(
 
 apps=(
   adobe-creative-cloud
+  avast-security
   blender
   docker
   dropbox
   expressvpn
+  fantasy-map-generator
   firefox
   google-chrome
+  google-cloud-sdk
   handbrake
   iterm2
   kindle
   lastpass
   meshmixer
   microsoft-office
+  minecraft
   moom
+  plex
+  plex-media-server
+  prusaslicer
   slack
   spotify
   steam
@@ -68,13 +75,18 @@ apps=(
   visual-studio-code
   vlc
   whatsapp
-  zoom
+  wireshark
+  zoomus
 )
 
 fonts=(
   fira-code
   pt-mono
   source-code-pro
+)
+
+drivers=(
+  wacom-tablet
 )
 
 echo Installing packages...
@@ -87,7 +99,7 @@ do
   else 
     echo Installing $pkg...
     brew install $pkg
-    pkg_counter=( $pkg_counter + 1 )
+    (( pkg_counter = pkg_counter + 1 ))
     echo Package $pkg installed.
   fi
 done
@@ -103,7 +115,7 @@ do
   else
     echo Installing $app...
     brew cask install $app
-    app_counter=( $app_counter + 1 )
+    (( app_counter = app_counter + 1 ))
     echo Application $app installed.
   fi
 done
@@ -120,10 +132,26 @@ do
   else 
     echo Installing font $font...
     brew cask install "font-${font}"
-    font_counter=( $font_counter + 1 )
+    (( font_counter = font_counter + 1 ))
     echo Font $font installed.
 
   fi
 done
 echo $font_counter fonts installed.
 
+echo Installing drivers...
+brew tap homebrew/cask-drivers
+driver_counter=0
+for driver in "${drivers[@]}"
+do
+  if brew cask ls --versions $driver &> /dev/null
+  then
+    echo Driver $driver is already installed.
+  else
+    echo Installing driver $driver...
+    brew cask install $driver
+    (( driver_counter = driver_counter + 1 ))
+    echo Driver $driver installed.
+  fi
+done
+echo $driver_counter drivers installed.
