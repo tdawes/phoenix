@@ -47,6 +47,7 @@ pkgs=(
 )
 
 apps=(
+  adobe-acrobat-reader
   adobe-creative-cloud
   avast-security
   blender
