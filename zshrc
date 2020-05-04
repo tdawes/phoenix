@@ -15,3 +15,5 @@ alias gd="git diff"
 alias gdc="git diff --cached"
 
 export PATH="${${(%):-%x}:a:h}/unix:$PATH"
+
+eval "$(direnv hook zsh)"
