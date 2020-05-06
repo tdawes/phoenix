@@ -7,6 +7,7 @@ export PROMPT='%F{cyan}%n:%F{yellow}%~%F{245}$(parse_git_branch)%F{white}%%%f '
 
 # zsh autocompletion
 autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # git aliases
 alias gs="git status"

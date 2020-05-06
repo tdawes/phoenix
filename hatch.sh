@@ -17,3 +17,6 @@ ${CONFIG_DIR}/git.sh
 
 # Install global node libraries
 ${CONFIG_DIR}/node.sh
+
+# Configure MacOSX
+${CONFIG_DIR}/macos.sh
