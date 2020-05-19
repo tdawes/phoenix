@@ -23,6 +23,7 @@ brew install zsh
 
 # Install packages
 pkgs=(
+  ag
   awscli
   direnv
   fswatch
@@ -64,7 +65,6 @@ apps=(
   lastpass
   meshmixer
   microsoft-office
-  minecraft
   moom
   plex
   plex-media-server
