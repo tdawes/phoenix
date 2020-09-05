@@ -66,6 +66,7 @@ apps=(
   meshmixer
   microsoft-office
   moom
+  ngrok
   plex
   plex-media-server
   prusaslicer
