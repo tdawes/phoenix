@@ -9,7 +9,7 @@ if [[ ! $(command -v brew) ]]
 then 
   # Install Brew
   # See https://brew.sh/ for more information
-  echo "Installing homebrew..."
+  echo "Installing HomeBrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
