@@ -19,13 +19,19 @@ echo Updating brew...
 brew update
 
 # Update the right version of zsh
-brew install zsh
+if brew ls --versions zsh &> /dev/null
+then
+  echo zsh is already installed.
+else
+  brew install zsh
+fi
 
 # Install packages
 pkgs=(
   ag
   awscli
   direnv
+  dive
   fswatch
   git
   git-crypt
@@ -111,12 +117,12 @@ echo Installing applications...
 app_counter=0
 for app in "${apps[@]}"
 do
-  if brew cask ls --versions $app &> /dev/null
+  if brew ls --versions $app &> /dev/null
   then
     echo Application $app is already installed.
   else
     echo Installing $app...
-    brew cask install $app
+    brew install --cask $app
     (( app_counter = app_counter + 1 ))
     echo Application $app installed.
   fi
@@ -128,12 +134,12 @@ brew tap homebrew/cask-fonts
 font_counter=0
 for font in "${fonts[@]}"
 do
-  if brew cask ls --versions "font-${font}" &> /dev/null
+  if brew ls --versions "font-${font}" &> /dev/null
   then
     echo Font $font is already installed.
   else 
     echo Installing font $font...
-    brew cask install "font-${font}"
+    brew install --cask "font-${font}"
     (( font_counter = font_counter + 1 ))
     echo Font $font installed.
 
@@ -146,12 +152,12 @@ brew tap homebrew/cask-drivers
 driver_counter=0
 for driver in "${drivers[@]}"
 do
-  if brew cask ls --versions $driver &> /dev/null
+  if brew ls --versions $driver &> /dev/null
   then
     echo Driver $driver is already installed.
   else
     echo Installing driver $driver...
-    brew cask install $driver
+    brew install --cask $driver
     (( driver_counter = driver_counter + 1 ))
     echo Driver $driver installed.
   fi
