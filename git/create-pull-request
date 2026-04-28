@@ -4,18 +4,18 @@ set -e
 
 setopt RE_MATCH_PCRE
 
-PROJECT_DIR=$PWD
+git_remote=$(git config --get remote.origin.url)
 
-GIT_REMOTE=$(git config --get remote.origin.url)
+default_branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
 
-if [[ $GIT_REMOTE =~ '(?:(?:ssh://)?git@github.com:|https://github.com/)([A-Za-z0-9](?:(?:[A-Za-z0-9]|\-(?!\-))+[A-Za-z0-9])?)/([A-Za-z0-9_\-\.]+(?<!\.git))(?:\.git)?$' ]]; then
-  OWNER=$match[1]
-  NAME=$match[2]
+if [[ $git_remote =~ '(?:(?:ssh://)?git@github.com|https://github.com)/([A-Za-z0-9](?:(?:[A-Za-z0-9]|\-(?!\-))+[A-Za-z0-9])?)/([A-Za-z0-9_\-\.]+(?<!\.git))(?:\.git)?$' ]]; then
+  owner=$match[1]
+  name=$match[2]
 else 
-  echo "Could not parse a GitHub project from ${GIT_REMOTE}"
+  echo "Could not parse a GitHub project from ${git_remote}"
   exit 1
 fi
 
-CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+current_branch=$(git rev-parse --abbrev-ref HEAD)
 
-open "https://github.com/$(url-encode $OWNER)/$(url-encode $NAME)/compare/master...$(url-encode $CURRENT_BRANCH)"
+open "https://github.com/$(url-encode $owner)/$(url-encode $name)/compare/$(url-encode $default_branch)...$(url-encode $current_branch)"
