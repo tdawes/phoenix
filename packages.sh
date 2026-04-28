@@ -33,6 +33,7 @@ pkgs=(
   direnv
   dive
   fswatch
+  gh
   git
   git-crypt
   gnupg
@@ -69,7 +70,6 @@ apps=(
   iterm2
   kindle
   lastpass
-  meshmixer
   microsoft-office
   moom
   ngrok
