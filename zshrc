@@ -17,4 +17,8 @@ alias gdc="git diff --cached"
 
 export PATH="${${(%):-%x}:a:h}/unix:$PATH"
 
+if [[ -x /opt/homebrew/bin/brew ]]; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 eval "$(direnv hook zsh)"
